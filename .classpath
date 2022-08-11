@@ -62,5 +62,6 @@
 	<classpathentry kind="lib" path="D:/log4j/SDET/poi-bin-5.2.2-20220312/poi-bin-5.2.2/auxiliary/xmlgraphics-commons-2.6.jar"/>
 	<classpathentry kind="lib" path="D:/log4j/SDET/poi-bin-5.2.2-20220312/poi-bin-5.2.2/auxiliary/xmlsec-2.3.0.jar"/>
 	<classpathentry kind="lib" path="D:/log4j/SDET/jar_files log4j/log4j-core-2.17.2.0001L.jar"/>
+	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
