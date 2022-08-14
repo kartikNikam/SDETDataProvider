@@ -1,5 +1,6 @@
 package DataDrivenTesting;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -42,7 +43,8 @@ public class Testddt {
      {
     	if(res.equals(act_title))
     	{
-    		driver.findElement(By.linkText("Logout")).click();
+    		//driver.findElement(By.linkText("Logout")).click();
+    		driver.findElement(By.xpath("//*[text()='Logout']")).click();
     		Assert.assertTrue(true);
     	}
     	else
@@ -53,7 +55,7 @@ public class Testddt {
     	else if(res.equals("invalid")) {
     		if(Exp_title.equals(act_title))
     		{
-    			driver.findElement(By.linkText("Logout")).click();
+    			driver.findElement(By.xpath("//*[text()='Logout']")).click();
     			Assert.assertTrue(true);
     		}
     		else
@@ -67,17 +69,36 @@ public class Testddt {
 	}
 	
 	@DataProvider(name="LoginData")
-	 String[][]getdata(){
+	 String[][]getdata() throws IOException{
 			
-			String logindata[][] = {
+			/*String logindata[][] = {
 					
 					{"admin@yourstore.com","admin","valid"},
 					{"admn@yourstore.com","admin","invalid"},
 					{"admin@yourstore.com","amin","invalid"},
 					{"admin@yourstoe.com","adminw","invalid"}
 
-					};
-			return logindata;
+					};*/
+		
+		
+		String path="C:\\Users\\kartikpc\\eclipse-workspace\\SDETDataProvider\\src\\Datafiles\\LoginData.xlsx";
+		 XLUtility Xlutil = new  XLUtility(path);    // path and object 
+		 
+		 int totalrows = Xlutil.getRowCount("Sheet1");
+		 int totalcols = Xlutil.getCellCount("Sheet1", 1);
+		 
+		 String loginData[][]=new String[totalrows][totalcols];
+		 
+		 for(int i =1;i<=totalrows;i++)
+		 {
+			 for(int j=0;j<totalcols;j++) {
+				 
+			loginData[i-1][j]=Xlutil.getCellData("Sheet1", i, j);	 
+			 }
+		 }
+		  
+		
+			return loginData;
 		}
 	
 
